@@ -1,0 +1,12 @@
+environment/
+credentials.json
+question_bank.json
+
+core/__pycache__
+ui/__pycache__
+
+quizzer_mobile/*
+!quizzer_mobile/assets
+!quizzer_mobile/lib
+!quizzer_mobile/README.md
+!!quizzer_mobile/pubspec.yaml

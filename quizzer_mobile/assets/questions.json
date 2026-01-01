@@ -1,0 +1,9 @@
+[
+  {
+    "id": "em1",
+    "category": "EM Waves",
+    "question": "Speed of EM wave in vacuum?",
+    "options": ["3×10^8 m/s", "1.5×10^8 m/s", "10^6 m/s", "Infinite"],
+    "correct": 0
+  }
+]
