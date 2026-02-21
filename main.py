@@ -4,6 +4,7 @@ from ui.main_window import MainWindow
 from core.drive_backup import backup_to_drive
 
 def on_exit():
+    print("Backup running...")
     backup_to_drive("data/question_bank.json")
 
 app = QApplication(sys.argv)

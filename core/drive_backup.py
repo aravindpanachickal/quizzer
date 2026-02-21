@@ -73,6 +73,37 @@ def backup_to_drive(local_file):
                 fields="id"
             ).execute()
 
-    except Exception:
-        # Silent failure — never crash quiz
-        pass
+    except Exception as e:
+        print("Drive backup failed:", e)
+
+        # If token error → delete token and retry once
+        if "invalid_grant" in str(e) or "invalid_request" in str(e):
+            try:
+                if TOKEN_FILE.exists():
+                    TOKEN_FILE.unlink()
+                    print("Old token removed. Re-authenticating...")
+
+                # Retry once
+                service = get_drive_service()
+                file_id = find_existing_file(service)
+
+                media = MediaFileUpload(
+                    local_file, mimetype="application/json"
+                )
+
+                if file_id:
+                    service.files().update(
+                        fileId=file_id,
+                        media_body=media
+                    ).execute()
+                else:
+                    service.files().create(
+                        body={"name": BACKUP_NAME},
+                        media_body=media,
+                        fields="id"
+                    ).execute()
+
+                print("Backup successful after re-authentication.")
+
+            except Exception as e2:
+                print("Retry failed:", e2)
