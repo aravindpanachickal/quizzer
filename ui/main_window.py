@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (
-    QMainWindow, QAction, QApplication
+    QMainWindow, QAction, QApplication, QMessageBox
 )
 from ui.quiz_setup_dialog import QuizSetupDialog
 from ui.question_editor import QuestionEditor

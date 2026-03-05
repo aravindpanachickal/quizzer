@@ -11,9 +11,7 @@ class QuizWindow(QWidget):
         super().__init__()
         self.engine = QuizEngine(categories=categories)
 
-        # For now: entire question bank
-        self.engine = QuizEngine()
-
+        
         self.current_question = None
 
         self.layout = QVBoxLayout()
