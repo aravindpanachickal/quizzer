@@ -18,7 +18,8 @@ class DriveService {
           "Failed to fetch questions. Status code: ${res.statusCode}");
     }
 
-    final Map<String, dynamic> data = json.decode(res.body);
+    final decodedBody = utf8.decode(res.bodyBytes);
+    final Map<String, dynamic> data = json.decode(decodedBody);
     if (!data.containsKey('categories')) {
       throw Exception("JSON does not contain 'categories' key");
     }
